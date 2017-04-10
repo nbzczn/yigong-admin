@@ -3,7 +3,7 @@ FORMAT: 1A
 # 天平义工API
 
 # User [/api/user]
-User resource representation.
+用户资源接口
 
 ## 创建用户 [POST /api/user]
 
