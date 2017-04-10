@@ -26,7 +26,7 @@ class UserController extends Controller
      * @Transaction({
      *      @Request({"mobile": "手机号", "password": "密码", "code": "短信验证码"}),
      *      @Response(200, body={"id": "用户主键"}),
-     *      @Response(422, body={"error": {"message": {"Username is already taken."}}})
+     *      @Response(422, body={"message": "合法性验证信息", "errors": "错误信息，是个json对象"})
      * })
      *
      * @author 陈泽韦 549226266@qq.com
@@ -36,17 +36,6 @@ class UserController extends Controller
         $model = new User;
         $model->mobile = $request->mobile;
         $model->password = bcrypt($request->password);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**

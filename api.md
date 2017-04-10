@@ -28,9 +28,6 @@ User resource representation.
     + Body
 
             {
-                "error": {
-                    "message": [
-                        "Username is already taken."
-                    ]
-                }
+                "message": "合法性验证信息",
+                "errors": "错误信息，是个json对象"
             }

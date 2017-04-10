@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\User;
 
+use Dingo\Api\Exception\StoreResourceFailedException;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class storeRequest extends FormRequest
@@ -45,5 +47,12 @@ class storeRequest extends FormRequest
             'code.required' => '验证码必须',
             'code.verify_code' => '验证码错误或已过期',
         ];
+    }
+    /**
+     * {@inheritdoc}
+     */
+    protected function failedValidation(Validator $validator)
+    {
+        throw new StoreResourceFailedException('用户信息验证失败', $validator->errors());
     }
 }
