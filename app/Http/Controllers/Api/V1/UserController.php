@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 
 /**
- * User resource representation.
+ * 用户资源接口
  *
  * @Resource("User", uri="/api/user")
  */

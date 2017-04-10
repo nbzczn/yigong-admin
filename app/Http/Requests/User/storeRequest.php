@@ -53,6 +53,6 @@ class storeRequest extends FormRequest
      */
     protected function failedValidation(Validator $validator)
     {
-        throw new StoreResourceFailedException('用户信息验证失败', $validator->errors());
+        throw new StoreResourceFailedException('无法错误信息', $validator->errors());
     }
 }
