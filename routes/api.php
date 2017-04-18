@@ -16,4 +16,5 @@ $api->version('v1', function ($api) {
         $api->get('/user_profile', 'UserProfileController@detail');
         $api->put('/user_profile/update', 'UserProfileController@update');
     });
+
 });
