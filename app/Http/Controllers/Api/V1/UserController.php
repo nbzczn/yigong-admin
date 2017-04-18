@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Requests\User\storeRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Transformers\UserTransformer;
 use App\User;
 
 /**
@@ -13,19 +14,14 @@ use App\User;
  */
 class UserController extends Controller
 {
-    public function index()
-    {
-        //
-    }
-
     /**
-     * 创建用户
+     * 注册用户
      *
      * @Post("/")
      * @Versions({"v1"})
      * @Transaction({
      *      @Request({"mobile": "手机号", "password": "密码", "code": "短信验证码"}),
-     *      @Response(200, body={"id": "用户主键"}),
+     *      @Response(200, body={"id": "用户主键"，"mobile": "手机号"}),
      *      @Response(422, body={"message": "合法性验证信息", "errors": "错误信息，是个json对象"})
      * })
      *
@@ -36,6 +32,9 @@ class UserController extends Controller
         $model = new User;
         $model->mobile = $request->mobile;
         $model->password = bcrypt($request->password);
+        $model->save();
+
+        return $this->response->item($model, new UserTransformer);
     }
 
     /**

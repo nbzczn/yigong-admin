@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\UserProfile;
 
 use Dingo\Api\Exception\StoreResourceFailedException;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
-class storeRequest extends FormRequest
+class updateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,9 +26,10 @@ class storeRequest extends FormRequest
     public function rules()
     {
         return [
-            'mobile' => 'unique:users|required|confirm_mobile_not_change',
-            'password' => 'required',
-            'code' => 'required|verify_code',
+            'real_name' => 'required',
+            'card_id' => 'required',
+            'gender' => 'required',
+            'address' => 'required',
         ];
     }
 
@@ -40,13 +41,10 @@ class storeRequest extends FormRequest
     public function messages()
     {
         return [
-            'mobile.required' => '手机号必须',
-            'mobile.unique' => '手机号已注册',
-            'mobile.confirm_mobile_not_change' => '提交的手机号已变更',
-            'password.required' => '密码必须',
-            'name.max' => '公众号名称不得大于255个字符',
-            'code.required' => '验证码必须',
-            'code.verify_code' => '验证码错误或已过期',
+            'real_name.required' => '姓名必须填写',
+            'card_id.required' => '身份证号码必须填写',
+            'gender.required' => '性别必须选择',
+            'address.required' => '地址必须填写',
         ];
     }
     /**
