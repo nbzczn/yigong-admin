@@ -34,6 +34,7 @@ class UserProfileController extends Controller
     {
         $user = $request->user();
         $profileModel = UserProfile::findOrNew($user->id);
+        $profileModel->user_id = $user->id;
         $profileModel->card_id = $request->input('card_id', '');
         $profileModel->real_name = $request->input('real_name', '');
         $profileModel->gender = $request->input('gender', '');

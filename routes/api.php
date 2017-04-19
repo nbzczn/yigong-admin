@@ -15,6 +15,7 @@ $api->version('v1', function ($api) {
     $api->group(['middleware' => 'auth:api', 'namespace' => 'App\Http\Controllers\Api\V1'], function ($api) {
         $api->get('/user_profile', 'UserProfileController@detail');
         $api->put('/user_profile/update', 'UserProfileController@update');
+        $api->get('/user/detail', 'UserController@detail');
     });
 
 });
